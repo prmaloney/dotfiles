@@ -1,0 +1,15 @@
+music_tab=$(arc-cli list-tabs | grep music.youtube.com)
+
+if [[ -z $music_tab ]] || [[ -n $1 ]]; then
+    search=""
+    arc-cli select-space-name pmaloney16
+    if [[ -n $1 ]]; then
+        search=$(sed 's/ /+/g' <<< $1)
+        arc-cli new-tab https://music.youtube.com/search?q=$search
+    else 
+        arc-cli new-tab https://music.youtube.com
+    fi
+else
+    IFS=', ' read -r win id rest <<< "$music_tab"
+    arc-cli select-tab $win $id
+fi

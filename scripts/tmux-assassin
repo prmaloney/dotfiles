@@ -1,0 +1,1 @@
+tmux ls -F "#S" | fzf | xargs tmux kill-session -t
