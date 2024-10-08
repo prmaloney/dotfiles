@@ -82,11 +82,10 @@ ZSH_THEME="robbyrussell"
 # Custom plugins may be added to $ZSH_CUSTOM/plugins/
 # Example format: plugins=(rails git textmate ruby lighthouse)
 # Add wisely, as too many plugins slow down shell startup.
-plugins=(git macos vi-mode zsh-syntax-highlighting workon)
+plugins=(git macos vi-mode)
 
 source $ZSH/oh-my-zsh.sh
-source $ZSH/fcommands.sh
-source $ZSH/aliases.sh
+source $HOME/aliases.sh
 
 export EDITOR="nvim"
 export WORK_DIR=$HOME/work
