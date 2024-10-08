@@ -1,0 +1,3 @@
+# i just wanna move windows between displays
+cmd + shift - l : yabai -m window --display next --focus
+cmd + shift - h : yabai -m window --display prev --focus

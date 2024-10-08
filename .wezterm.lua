@@ -1,7 +1,8 @@
 local wezterm = require 'wezterm'
 local config = {}
 
-config.font = wezterm.font('Fira Code', { weight = 'Medium' })
+config.font =
+  wezterm.font('JetBrains Mono', { weight = 'Bold' })
 config.font_size = 15
 config.color_scheme = 'kanagawabones'
 config.hide_tab_bar_if_only_one_tab = true
