@@ -86,6 +86,7 @@ plugins=(git macos vi-mode)
 
 source $ZSH/oh-my-zsh.sh
 source $HOME/aliases.sh
+source $(brew --prefix)/share/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh
 
 export EDITOR="nvim"
 export WORK_DIR=$HOME/work
@@ -130,4 +131,3 @@ bindkey -s ^s "fswitch\n"
 # bun
 export BUN_INSTALL="$HOME/.bun"
 export PATH="$BUN_INSTALL/bin:$PATH"
-
