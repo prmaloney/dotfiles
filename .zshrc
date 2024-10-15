@@ -10,11 +10,16 @@ addToPathFront /usr/local/bin
 addToPathFront /opt/homebrew/bin
 addToPathFront $HOME/bin
 addToPathFront $HOME/go/bin
-addToPathFront $HOME/.local/scripts
+addToPathFront $HOME/scripts
 export FZF_BASE=/opt/homebrew/bin/
 # Path to your oh-my-zsh installation.
 export ZSH="$HOME/.oh-my-zsh"
 export VIMDIR="$HOME/.config/nvim"
+
+
+export PERSONIO_BASEURL="op://Private/Personio/url"
+export PERSONIO_AUTH_EMAIL="op://Private/Personio/username"
+export PERSONIO_AUTH_PASSWORD="op://Private/Personio/password"
 
 # Set name of the theme to load --- if set to "random", it will
 # load a random theme each time oh-my-zsh is loaded, in which case,
@@ -85,6 +90,7 @@ ZSH_THEME="robbyrussell"
 plugins=(git macos vi-mode)
 
 source $ZSH/oh-my-zsh.sh
+source $HOME/.sdkman/bin/sdkman-init.sh
 source $HOME/aliases.sh
 source $(brew --prefix)/share/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh
 
@@ -131,3 +137,4 @@ bindkey -s ^s "fswitch\n"
 # bun
 export BUN_INSTALL="$HOME/.bun"
 export PATH="$BUN_INSTALL/bin:$PATH"
+source "$HOME/.sdkman/bin/sdkman-init.sh"
