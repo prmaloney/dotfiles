@@ -17,9 +17,8 @@ export ZSH="$HOME/.oh-my-zsh"
 export VIMDIR="$HOME/.config/nvim"
 
 
-export PERSONIO_BASEURL="op://Private/Personio/url"
-export PERSONIO_AUTH_EMAIL="op://Private/Personio/username"
-export PERSONIO_AUTH_PASSWORD="op://Private/Personio/password"
+export PERSONIO_BASEURL="https://squer.personio.de"
+export PERSONIO_AUTH_EMAIL=op://development/Employee/
 
 # Set name of the theme to load --- if set to "random", it will
 # load a random theme each time oh-my-zsh is loaded, in which case,
