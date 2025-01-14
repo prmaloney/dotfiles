@@ -1,5 +1,5 @@
 .config/gh
 .config/op
 .config/raycast
-.config/pgcli
+.config/pgcli/*
 .config/configstore
