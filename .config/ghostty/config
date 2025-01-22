@@ -2,6 +2,7 @@ theme = catppuccin-mocha
 font-family = FiraCode Nerd Font Mono
 font-thicken = true
 font-size = 14
+font-feature = -calt
 
 cursor-style = block
 cursor-style-blink = false
