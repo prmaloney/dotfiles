@@ -1,4 +1,4 @@
-alias vim=nvim
+alias vim=~/nvim-macos-arm64/bin/nvim
 alias ta="tmux attach"
 alias tls="tmux ls"
 alias tnew="tmux new -s"
@@ -7,5 +7,6 @@ alias p="op run -- rootless-personio"
 alias ls=lsd
 alias cat=bat
 alias grep=rg
-alias gbr="git branch | grep -v \"^\*\" | fzf | xargs git switch"
+alias gbr="git branch -a | grep -v \"^\*\"  | fzf | sed -r 's/remotes\/origin\///'| xargs git switch"
 alias ghb="gh browse"
+alias oil="nvim ."

@@ -10,16 +10,21 @@ addToPathFront() {
 }
 # If you come from bash you might have to change your $PATH.
 # export PATH=/Library/Python/3.9/bin:/Library/Python/3.9/lib:/opt/homebrew/bin:$HOME/bin:/usr/local/bin:/Applications/WezTerm.app/Contents/MacOS:$PATH
-addToPathFront /Library/Python/3.9/bin
 addToPathFront /usr/local/bin
 addToPathFront /opt/homebrew/bin
+addToPathFront /opt/homebrew/Cellar/python@3.13/3.13.2/bin
 addToPathFront $HOME/bin
 addToPathFront $HOME/go/bin
 addToPathFront $HOME/scripts
+export KUBECONFIG=/Users/prmaloney/.kube/config:/Users/prmaloney/.kube/more-uat
 export FZF_BASE=/opt/homebrew/bin/
 # Path to your oh-my-zsh installation.
 export ZSH="$HOME/.oh-my-zsh"
 export VIMDIR="$HOME/.config/nvim"
+export PYENV_ROOT="$HOME/.pyenv"
+[[ -d $PYENV_ROOT/bin ]] && export PATH="$PYENV_ROOT/bin:$PATH"
+eval "$(pyenv init - zsh)"
+eval "$(fnm env --use-on-cd --shell zsh)"
 
 
 export PERSONIO_BASEURL="https://squer.personio.de"
@@ -91,11 +96,12 @@ ZSH_THEME="robbyrussell"
 # Custom plugins may be added to $ZSH_CUSTOM/plugins/
 # Example format: plugins=(rails git textmate ruby lighthouse)
 # Add wisely, as too many plugins slow down shell startup.
-plugins=(git macos vi-mode)
+plugins=(git macos vi-mode direnv)
 
 source $ZSH/oh-my-zsh.sh
 source $HOME/.sdkman/bin/sdkman-init.sh
 source $HOME/aliases.sh
+source $HOME/credentials.sh
 source $(brew --prefix)/share/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh
 
 export EDITOR="nvim"
@@ -110,6 +116,7 @@ bindkey -M menuselect 'j' vi-down-line-or-history
 bindkey -s ^f "tmux-sessionizer\n"
 bindkey -s ^k "tmux-assassin\n"
 bindkey -s ^s "fswitch\n"
+bindkey -s ^b "gbr\n"
 
 # User configuration
 
@@ -148,3 +155,6 @@ eval "$(zoxide init zsh)"
 export NVM_DIR="$HOME/.nvm"
 [ -s "$NVM_DIR/nvm.sh" ] && \. "$NVM_DIR/nvm.sh"  # This loads nvm
 [ -s "$NVM_DIR/bash_completion" ] && \. "$NVM_DIR/bash_completion"  # This loads nvm bash_completion
+
+# bun completions
+[ -s "/Users/prmaloney/.bun/_bun" ] && source "/Users/prmaloney/.bun/_bun"

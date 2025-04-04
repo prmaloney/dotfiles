@@ -3,3 +3,4 @@
 .config/raycast
 .config/pgcli/*
 .config/configstore
+.env
