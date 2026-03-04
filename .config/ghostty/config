@@ -1,4 +1,4 @@
-theme = catppuccin-mocha
+theme = Catppuccin Mocha
 font-family = FiraCode Nerd Font Mono
 font-thicken = true
 font-size = 14
@@ -6,7 +6,6 @@ font-feature = -calt
 
 cursor-style = block
 cursor-style-blink = false
-cursor-invert-fg-bg = true
 shell-integration-features = no-cursor
 
 window-padding-x = 10
@@ -15,3 +14,4 @@ window-padding-color = extend
 macos-titlebar-style = hidden
 
 macos-option-as-alt = true
+macos-icon = xray

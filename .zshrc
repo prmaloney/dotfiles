@@ -14,10 +14,13 @@ addToPathFront /usr/local/bin
 addToPathFront /opt/homebrew/bin
 addToPathFront /opt/homebrew/Cellar/python@3.13/3.13.2/bin
 addToPathFront $HOME/bin
+addToPathFront $HOME/.local/bin
 addToPathFront $HOME/go/bin
 addToPathFront $HOME/scripts
 export KUBECONFIG=/Users/prmaloney/.kube/config:/Users/prmaloney/.kube/more-uat
 export FZF_BASE=/opt/homebrew/bin/
+# Set up fzf key bindings and fuzzy completion
+source <(fzf --zsh)
 # Path to your oh-my-zsh installation.
 export ZSH="$HOME/.oh-my-zsh"
 export VIMDIR="$HOME/.config/nvim"
@@ -101,7 +104,6 @@ plugins=(git macos vi-mode direnv)
 source $ZSH/oh-my-zsh.sh
 source $HOME/.sdkman/bin/sdkman-init.sh
 source $HOME/aliases.sh
-source $HOME/credentials.sh
 source $(brew --prefix)/share/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh
 
 export EDITOR="nvim"
@@ -113,10 +115,13 @@ bindkey -M menuselect 'k' vi-up-line-or-history
 bindkey -M menuselect 'l' vi-forward-char
 bindkey -M menuselect 'j' vi-down-line-or-history
 
-bindkey -s ^f "tmux-sessionizer\n"
-bindkey -s ^k "tmux-assassin\n"
-bindkey -s ^s "fswitch\n"
-bindkey -s ^b "gbr\n"
+bindkey ^f "tmux-sessionizer\n"
+bindkey ^k "tmux-assassin\n"
+bindkey ^s "fswitch\n"
+bindkey ^b "gbr\n"
+bindkey ^v "oil\n"
+
+bindkey ^u clear-screen
 
 # User configuration
 
@@ -158,3 +163,11 @@ export NVM_DIR="$HOME/.nvm"
 
 # bun completions
 [ -s "/Users/prmaloney/.bun/_bun" ] && source "/Users/prmaloney/.bun/_bun"
+source ~/.cache/mill/download/mill-completion.sh # MILL_SOURCE_COMPLETION_LINE
+
+# Added by Windsurf
+export PATH="/Users/prmaloney/.codeium/windsurf/bin:$PATH"
+eval $(thefuck --alias)
+
+# OpenClaw Completion
+source "/Users/prmaloney/.openclaw/completions/openclaw.zsh"

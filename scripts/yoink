@@ -1,0 +1,6 @@
+#!/usr/bin/env bash
+case "$1" in
+  /*) path="$1" ;;
+  *)  path="$PWD/$1" ;;
+esac
+osascript -e "set the clipboard to (POSIX file \"$path\")"
