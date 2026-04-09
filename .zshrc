@@ -115,11 +115,23 @@ bindkey -M menuselect 'k' vi-up-line-or-history
 bindkey -M menuselect 'l' vi-forward-char
 bindkey -M menuselect 'j' vi-down-line-or-history
 
-bindkey ^f "tmux-sessionizer\n"
-bindkey ^k "tmux-assassin\n"
-bindkey ^s "fswitch\n"
-bindkey ^b "gbr\n"
-bindkey ^v "oil\n"
+_widget_tmux_sessionizer() { zle -I; tmux-sessionizer; zle reset-prompt }
+_widget_tmux_assassin()    { zle -I; tmux-assassin;    zle reset-prompt }
+_widget_fswitch()          { zle -I; fswitch;          zle reset-prompt }
+_widget_gbr()              { zle -I; gbr;              zle reset-prompt }
+_widget_oil()              { zle -I; oil;              zle reset-prompt }
+
+zle -N _widget_tmux_sessionizer
+zle -N _widget_tmux_assassin
+zle -N _widget_fswitch
+zle -N _widget_gbr
+zle -N _widget_oil
+
+bindkey '^f' _widget_tmux_sessionizer
+bindkey '^k' _widget_tmux_assassin
+bindkey '^s' _widget_fswitch
+bindkey '^b' _widget_gbr
+bindkey '^v' _widget_oil
 
 bindkey ^u clear-screen
 
@@ -169,5 +181,8 @@ source ~/.cache/mill/download/mill-completion.sh # MILL_SOURCE_COMPLETION_LINE
 export PATH="/Users/prmaloney/.codeium/windsurf/bin:$PATH"
 eval $(thefuck --alias)
 
-# OpenClaw Completion
-source "/Users/prmaloney/.openclaw/completions/openclaw.zsh"
+export CLAUDE_CODE_DISABLE_TERMINAL_TITLE=1
+
+
+# Load Angular CLI autocompletion.
+source <(ng completion script)
