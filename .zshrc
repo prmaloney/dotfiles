@@ -99,21 +99,7 @@ ZSH_THEME="robbyrussell"
 # Custom plugins may be added to $ZSH_CUSTOM/plugins/
 # Example format: plugins=(rails git textmate ruby lighthouse)
 # Add wisely, as too many plugins slow down shell startup.
-plugins=(git macos vi-mode direnv)
-
-source $ZSH/oh-my-zsh.sh
-source $HOME/.sdkman/bin/sdkman-init.sh
-source $HOME/aliases.sh
-source $(brew --prefix)/share/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh
-
-export EDITOR="nvim"
-export WORK_DIR=$HOME/work
-export NVIM_TUI_ENABLE_TRUE_COLOR=1
-
-bindkey -M menuselect 'h' vi-backward-char
-bindkey -M menuselect 'k' vi-up-line-or-history
-bindkey -M menuselect 'l' vi-forward-char
-bindkey -M menuselect 'j' vi-down-line-or-history
+plugins=(git macos zsh-vi-mode direnv)
 
 _widget_tmux_sessionizer() { zle -I; tmux-sessionizer; zle reset-prompt }
 _widget_tmux_assassin()    { zle -I; tmux-assassin;    zle reset-prompt }
@@ -127,13 +113,34 @@ zle -N _widget_fswitch
 zle -N _widget_gbr
 zle -N _widget_oil
 
-bindkey '^f' _widget_tmux_sessionizer
-bindkey '^k' _widget_tmux_assassin
-bindkey '^s' _widget_fswitch
-bindkey '^b' _widget_gbr
-bindkey '^v' _widget_oil
+ZVM_INSERT_MODE_CURSOR='bl'
+ZVM_NORMAL_MODE_CURSOR='bl'
+ZVM_VI_HIGHLIGHT_BACKGROUND=#585b70
+ZVM_VI_HIGHLIGHT_FOREGROUND=#cdd6f4
 
-bindkey ^u clear-screen
+function zvm_after_init() {
+  bindkey -v
+  bindkey -M menuselect 'h' vi-backward-char
+  bindkey -M menuselect 'k' vi-up-line-or-history
+  bindkey -M menuselect 'l' vi-forward-char
+  bindkey -M menuselect 'j' vi-down-line-or-history
+
+  bindkey '^f' _widget_tmux_sessionizer
+  bindkey '^k' _widget_tmux_assassin
+  bindkey '^s' _widget_fswitch
+  bindkey '^b' _widget_gbr
+  bindkey '^v' _widget_oil
+  bindkey '^u' clear-screen
+}
+
+source $ZSH/oh-my-zsh.sh
+source $HOME/.sdkman/bin/sdkman-init.sh
+source $HOME/aliases.sh
+source $(brew --prefix)/share/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh
+
+export EDITOR="nvim"
+export WORK_DIR=$HOME/work
+export NVIM_TUI_ENABLE_TRUE_COLOR=1
 
 # User configuration
 
@@ -186,3 +193,11 @@ export CLAUDE_CODE_DISABLE_TERMINAL_TITLE=1
 
 # Load Angular CLI autocompletion.
 source <(ng completion script)
+
+# Corporate SSL certs (Allianz/Squer Zscaler proxy)
+export NODE_EXTRA_CA_CERTS="/Users/prmaloney/.allianz-full-chain.pem"
+# export SSL_CERT_FILE="/Users/prmaloney/.allianz-full-chain.pem"
+
+# Local/secret overrides (not source-controlled)
+[ -f ~/.zshrc.local ] && source ~/.zshrc.local
+eval "$(direnv hook zsh)"
